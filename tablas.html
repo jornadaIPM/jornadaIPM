@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixture y Tabla Grupo 1</title>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    
+    
+</head>
+<body>
+    <header>
+        <h1>Tablas</h1>
+        <div class="menu-icon" onclick="togglePopup()">☰</div>
+    </header>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="togglePopup()">&times;</span>
+            <h1>Opciones</h1>
+            <br>
+            <ul>
+                <li><a href="tablas.html" style="font-size: larger;">Tablas</a></li>
+                <br>
+                <li><a href="fixtures.html" style="font-size: larger;">Fixtures</a></li>
+                <br>
+                <li><a href=""style="font-size: larger;" >Comida</a></li>
+                
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <section onclick="grupo1()" id="tabla-grupo1">
+            <h2>Grupo 1</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Equipo</th>
+                        <th>Puntos</th>
+                        <th>Partidos Jugados</th>
+                        <th>Goles a Favor</th>
+                        <th>Goles en Contra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Petulia FC</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Q.V.M</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Kirikocho FC</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Dumbo FC</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section onclick="grupo2()" id="tabla-grupo2">
+            <h2>Grupo 2</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Equipo</th>
+                        <th>Puntos</th>
+                        <th>Partidos Jugados</th>
+                        <th>Goles a Favor</th>
+                        <th>Goles en Contra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Scovenetta</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Varry</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Serpinos Family</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Sin nombre FC</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section onclick="grupo3()" id="tabla-grupo3">
+            <h2>Grupo 3</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Equipo</th>
+                        <th>Puntos</th>
+                        <th>Partidos Jugados</th>
+                        <th>Goles a Favor</th>
+                        <th>Goles en Contra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Ruckj Aragona</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Que baile el brujo</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>La reserva</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Jornada 1ro a 3ro</p>
+    </footer>
+
+    <script>
+        function togglePopup() {
+            var popup = document.getElementById("popup");
+            popup.classList.toggle("show");
+        }
+        function grupo1() {
+            window.location.href = "fxtG1.html"
+        }
+        function grupo2() {
+            window.location.href = "fxtG2.html"
+        }
+        function grupo3() {
+            window.location.href = "fxtG3.html"
+        }
+        function grupo4() {
+            window.location.href = "fxtG4.html"
+        }
+        
+    </script>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-analytics.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+  
+    const firebaseConfig = {
+      apiKey: "AIzaSyCsmqiMwPKeYdqasr_o36BworobPwzBdOE",
+      authDomain: "jornadapoli.firebaseapp.com",
+      projectId: "jornadapoli",
+      storageBucket: "jornadapoli.appspot.com",
+      messagingSenderId: "269682921594",
+      appId: "1:269682921594:web:053816e578e62c490eebc3",
+      measurementId: "G-8ZTBEBNWXX"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+  
+    // Datos a agregar
+    const docData = {
+        partido: "Final",
+        G1:0,
+        G2:0
+    };
+    
+    // ID personalizado basado en el nombre del equipo
+    const customId = docData.partido;
+  
+    // Función para agregar datos con un ID personalizado
+    async function addTeamWithCustomId(docData, customId) {
+      try {
+        const docRef = doc(db, "partidos", customId);
+        await setDoc(docRef, docData);
+        console.log("Document written with custom ID: ", customId);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    }
+  
+    // Llamada a la función para agregar datos
+    //addTeamWithCustomId(docData, customId);
+</script>
+
+  
+</body>
+</html>

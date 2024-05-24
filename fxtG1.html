@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixture y Tabla Grupo 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Fixture Grupo 1</h1>
+        <div class="menu-icon" onclick="togglePopup()">☰</div>
+
+    </header>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close" onclick="togglePopup()">&times;</span>
+            <h1>Opciones</h1>
+            <br>
+            <ul>
+                <li><a href="tablas.html" style="font-size: larger;">Tablas</a></li>
+                <br>
+                <li><a href="fixtures.html" style="font-size: larger;">Fixtures</a></li>
+                <br>
+                <li><a href=""style="font-size: larger;" >Comida</a></li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    <main>
+        <section id="fixture">
+            <h2>Fixture</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hora</th>
+                        <th>Equipo 1</th>
+                        <th>Equipo 2</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>?</td>
+                        <td>Petulia FC</td>
+                        <td>Q.V.M</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>?</td>
+                        <td>Kirikocho FC</td>
+                        <td>Dumbo FC</td>
+                        <td>-</td>
+                    </tr>
+                    <thead>
+                    </tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>?</td>
+                        <td>Petulia FC</td>
+                        <td>Kirikocho FC</td>
+                        <td>-</td>
+                    </tr>
+
+                    <tr>
+                        <td>?</td>
+                        <td>Q.V.M</td>
+                        <td>Dumbo FC</td>
+                        <td>-</td>
+                    </tr>
+                    <thead>
+                    </tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>?</td>
+                        <td>Dumbo FC</td>
+                        <td>Petulia FC</td>
+                        <td>-</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>?</td>
+                        <td>Q.V.M</td>
+                        <td>Kirikocho FC</td>
+                        <td>-</td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </section>
+
+        <section id="tabla-general">
+            <h2>Tabla</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Equipo</th>
+                        <th>Puntos</th>
+                        <th>Partidos Jugados</th>
+                        <th>Goles a Favor</th>
+                        <th>Goles en Contra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Petulia FC</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Q.V.M</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Kirikocho FC</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Dumbo FC</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script>
+        function togglePopup() {
+            var popup = document.getElementById("popup");
+            popup.classList.toggle("show");
+        }
+    </script>
+    <footer>
+        <p>&copy; 2024 Jornada 1ro a 3ro</p>
+    </footer>
+</body>
+</html>
