@@ -47,13 +47,13 @@
                         <td>?</td>
                         <td>Scovenetta</td>
                         <td>Sin nombre FC</td>
-                        <td>-</td>
+                        <td id="G2_1">-</td>
                     </tr>
                     <tr>
                         <td>?</td>
                         <td>Varry</td>
                         <td>Serpinos Family</td>
-                        <td>-</td>
+                        <td id="G2_2">-</td>
                     </tr>
                     <thead>
                     </tr>
@@ -67,14 +67,14 @@
                         <td>?</td>
                         <td>Scovenetta</td>
                         <td>Varry</td>
-                        <td>-</td>
+                        <td id="G2_3">-</td>
                     </tr>
 
                     <tr>
                         <td>?</td>
                         <td>Sin nombre FC</td>
                         <td>Serpinos Family</td>
-                        <td>-</td>
+                        <td id="G2_4">-</td>
                     </tr>
                     <thead>
                     </tr>
@@ -88,13 +88,13 @@
                         <td>?</td>
                         <td>Scovenetta</td>
                         <td>Serpinos Family</td>
-                        <td>-</td>
+                        <td id="G2_5">-</td>
                     </tr>
                     <tr>
                         <td>?</td>
                         <td>Sin nombre FC</td>
                         <td>Varry</td>
-                        <td>-</td>
+                        <td id="G2_6">-</td>
                     </tr>
  
                     
@@ -118,35 +118,35 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Scovenetta</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG2_1">Scovenetta</td>
+                        <td id="puntosG2_1">0</td>
+                        <td id="PJG2_1">0</td>
+                        <td id="GFG2_1">0</td>
+                        <td id="GCG2_1">0</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Varry</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG2_2">Sin nombre FC</td>
+                        <td id="puntosG2_2">0</td>
+                        <td id="PJG2_2">0</td>
+                        <td id="GFG2_2">0</td>
+                        <td id="GCG2_2">0</td>
                     </tr>
                     <tr>
-                        <td>3</td>
-                        <td>Serpinos Family</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td >3</td>
+                        <td id="nombreG2_3">Varry</td>
+                        <td id="puntosG2_3">0</td>
+                        <td id="PJG2_3">0</td>
+                        <td id="GFG2_3">0</td>
+                        <td id="GCG2_3">0</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Sin nombre FC</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG2_4">Serpinos Family</td>
+                        <td id="puntosG2_4">0</td>
+                        <td id="PJG2_4">0</td>
+                        <td id="GFG2_4">0</td>
+                        <td id="GCG2_4">0</td>
                     </tr>
                 </tbody>
             </table>
@@ -158,6 +158,124 @@
             popup.classList.toggle("show");
         }
     </script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-analytics.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCsmqiMwPKeYdqasr_o36BworobPwzBdOE",
+      authDomain: "jornadapoli.firebaseapp.com",
+      projectId: "jornadapoli",
+      storageBucket: "jornadapoli.appspot.com",
+      messagingSenderId: "269682921594",
+      appId: "1:269682921594:web:053816e578e62c490eebc3",
+      measurementId: "G-8ZTBEBNWXX"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+  
+    // Datos a agregar
+    const docData = {
+        partido: "Final",
+        G1:0,
+        G2:0
+    };
+    
+    // ID personalizado basado en el nombre del equipo
+    const customId = docData.partido;
+  
+    // Función para agregar datos con un ID personalizado
+    async function addTeamWithCustomId(docData, customId) {
+      try {
+        const docRef = doc(db, "partidos", customId);
+        await setDoc(docRef, docData);
+        console.log("Document written with custom ID: ", customId);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    }
+  
+    // Llamada a la función para agregar datos
+    //addTeamWithCustomId(docData, customId);
+
+    const teamIds2 = ["Scovenetta", "Varry", "Serpinos Family", "Sin nombre FC"];
+
+    async function rellenarTablas2() {
+        try {
+            let equipos = [];
+
+            for (let id of teamIds2) {
+                const docRef = doc(db, "equipos", id);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    equipos.push({
+                        nombre: id,
+                        puntos: data.puntos,
+                        PJ: data.PJ,
+                        GC: data.GC,
+                        GF: data.GF
+                    });
+                } else {
+                    console.log(`No such document with ID: ${id}`);
+                }
+            }
+        
+    
+        // Ordenar los equipos por puntos de mayor a menor
+        equipos.sort((a, b) => b.puntos - a.puntos);
+        console.log(equipos)
+        document.getElementById("nombreG2_1").innerHTML = equipos[0].nombre;
+        document.getElementById("nombreG2_2").innerHTML = equipos[1].nombre;
+        document.getElementById("nombreG2_3").innerHTML = equipos[2].nombre;
+        document.getElementById("nombreG2_4").innerHTML = equipos[3].nombre;
+        document.getElementById("puntosG2_1").innerHTML = equipos[0].puntos;
+        document.getElementById("puntosG2_2").innerHTML = equipos[1].puntos;
+        document.getElementById("puntosG2_3").innerHTML = equipos[2].puntos;
+        document.getElementById("puntosG2_4").innerHTML = equipos[3].puntos;
+        document.getElementById("PJG2_1").innerHTML = equipos[0].PJ;
+        document.getElementById("PJG2_2").innerHTML = equipos[1].PJ;
+        document.getElementById("PJG2_3").innerHTML = equipos[2].PJ;
+        document.getElementById("PJG2_4").innerHTML = equipos[3].PJ;
+        document.getElementById("GCG2_1").innerHTML = equipos[0].GC;
+        document.getElementById("GCG2_2").innerHTML = equipos[1].GC;
+        document.getElementById("GCG2_3").innerHTML = equipos[2].GC;
+        document.getElementById("GCG2_4").innerHTML = equipos[3].GC;
+        document.getElementById("GFG2_1").innerHTML = equipos[0].GF;
+        document.getElementById("GFG2_2").innerHTML = equipos[1].GF;
+        document.getElementById("GFG2_3").innerHTML = equipos[2].GF;
+        document.getElementById("GFG2_4").innerHTML = equipos[3].GF;
+
+    }catch (e) {
+            console.error("Error getting documents: ", e);
+        }
+    }
+        
+    async function dataGrupo2() {
+      for (let i = 1; i <= 6; i++) {
+        const docId = `G2_${i}`;
+        const docRef = doc(db, "partidos", docId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          const G1 = data.G1;
+          const G2 = data.G2;
+          document.getElementById(docId).innerHTML = `${G1} - ${G2}`;
+        } else {
+          console.log(`No such document: ${docId}`);
+        }
+      }
+    }
+    dataGrupo2();
+    rellenarTablas2();
+
+</script>
     <footer>
         <p>&copy; 2024 Jornada 1ro a 3ro</p>
     </footer>

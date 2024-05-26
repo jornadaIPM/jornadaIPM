@@ -47,13 +47,13 @@
                         <td>?</td>
                         <td>Petulia FC</td>
                         <td>Q.V.M</td>
-                        <td>-</td>
+                        <td id="G1_1">-</td>
                     </tr>
                     <tr>
                         <td>?</td>
                         <td>Kirikocho FC</td>
                         <td>Dumbo FC</td>
-                        <td>-</td>
+                        <td id="G1_2">-</td>
                     </tr>
                     <thead>
                     </tr>
@@ -67,14 +67,14 @@
                         <td>?</td>
                         <td>Petulia FC</td>
                         <td>Kirikocho FC</td>
-                        <td>-</td>
+                        <td id="G1_3">-</td>
                     </tr>
 
                     <tr>
                         <td>?</td>
                         <td>Q.V.M</td>
                         <td>Dumbo FC</td>
-                        <td>-</td>
+                        <td id="G1_4">-</td>
                     </tr>
                     <thead>
                     </tr>
@@ -88,14 +88,14 @@
                         <td>?</td>
                         <td>Dumbo FC</td>
                         <td>Petulia FC</td>
-                        <td>-</td>
+                        <td id="G1_5">-</td>
                     </tr>
                     
                     <tr>
                         <td>?</td>
                         <td>Q.V.M</td>
                         <td>Kirikocho FC</td>
-                        <td>-</td>
+                        <td id="G1_6">-</td>
                     </tr>
 
 
@@ -120,35 +120,35 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Petulia FC</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG1_1">Petulia FC</td>
+                        <td id="puntosG1_1">0</td>
+                        <td id="PJG1_1">0</td>
+                        <td id="GFG1_1">0</td>
+                        <td id="GCG1_1">0</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Q.V.M</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG1_2">Q.V.M</td>
+                        <td id="puntosG1_2">0</td>
+                        <td id="PJG1_2">0</td>
+                        <td id="GFG1_2">0</td>
+                        <td id="GCG1_2">0</td>
                     </tr>
                     <tr>
-                        <td>3</td>
-                        <td>Kirikocho FC</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td >3</td>
+                        <td id="nombreG1_3">Kirikocho FC</td>
+                        <td id="puntosG1_3">0</td>
+                        <td id="PJG1_3">0</td>
+                        <td id="GFG1_3">0</td>
+                        <td id="GCG1_3">0</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Dumbo FC</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG1_4">Dumbo FC</td>
+                        <td id="puntosG1_4">0</td>
+                        <td id="PJG1_4">0</td>
+                        <td id="GFG1_4">0</td>
+                        <td id="GCG1_4">0</td>
                     </tr>
                 </tbody>
             </table>
@@ -163,5 +163,121 @@
     <footer>
         <p>&copy; 2024 Jornada 1ro a 3ro</p>
     </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-analytics.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+    
+        const firebaseConfig = {
+          apiKey: "AIzaSyCsmqiMwPKeYdqasr_o36BworobPwzBdOE",
+          authDomain: "jornadapoli.firebaseapp.com",
+          projectId: "jornadapoli",
+          storageBucket: "jornadapoli.appspot.com",
+          messagingSenderId: "269682921594",
+          appId: "1:269682921594:web:053816e578e62c490eebc3",
+          measurementId: "G-8ZTBEBNWXX"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+      
+        // Datos a agregar
+        const docData = {
+            partido: "Final",
+            G1:0,
+            G2:0
+        };
+        
+        // ID personalizado basado en el nombre del equipo
+        const customId = docData.partido;
+      
+        // Función para agregar datos con un ID personalizado
+        async function addTeamWithCustomId(docData, customId) {
+          try {
+            const docRef = doc(db, "partidos", customId);
+            await setDoc(docRef, docData);
+            console.log("Document written with custom ID: ", customId);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
+        }
+      
+        // Llamada a la función para agregar datos
+        //addTeamWithCustomId(docData, customId);
+    
+        const teamIds1 = ["Petulia FC", "Q.V.M", "Kirikocho FC", "Dumbo FC"];
+    
+        async function rellenarTablas1() {
+            try {
+                let equipos = [];
+    
+                for (let id of teamIds1) {
+                    const docRef = doc(db, "equipos", id);
+                    const docSnap = await getDoc(docRef);
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        equipos.push({
+                            nombre: id,
+                            puntos: data.puntos,
+                            PJ: data.PJ,
+                            GC: data.GC,
+                            GF: data.GF
+                        });
+                    } else {
+                        console.log(`No such document with ID: ${id}`);
+                    }
+                }
+            
+        
+            // Ordenar los equipos por puntos de mayor a menor
+            equipos.sort((a, b) => b.puntos - a.puntos);
+            console.log(equipos)
+            document.getElementById("nombreG1_1").innerHTML = equipos[0].nombre;
+            document.getElementById("nombreG1_2").innerHTML = equipos[1].nombre;
+            document.getElementById("nombreG1_3").innerHTML = equipos[2].nombre;
+            document.getElementById("nombreG1_4").innerHTML = equipos[3].nombre;
+            document.getElementById("puntosG1_1").innerHTML = equipos[0].puntos;
+            document.getElementById("puntosG1_2").innerHTML = equipos[1].puntos;
+            document.getElementById("puntosG1_3").innerHTML = equipos[2].puntos;
+            document.getElementById("puntosG1_4").innerHTML = equipos[3].puntos;
+            document.getElementById("PJG1_1").innerHTML = equipos[0].PJ;
+            document.getElementById("PJG1_2").innerHTML = equipos[1].PJ;
+            document.getElementById("PJG1_3").innerHTML = equipos[2].PJ;
+            document.getElementById("PJG1_4").innerHTML = equipos[3].PJ;
+            document.getElementById("GCG1_1").innerHTML = equipos[0].GC;
+            document.getElementById("GCG1_2").innerHTML = equipos[1].GC;
+            document.getElementById("GCG1_3").innerHTML = equipos[2].GC;
+            document.getElementById("GCG1_4").innerHTML = equipos[3].GC;
+            document.getElementById("GFG1_1").innerHTML = equipos[0].GF;
+            document.getElementById("GFG1_2").innerHTML = equipos[1].GF;
+            document.getElementById("GFG1_3").innerHTML = equipos[2].GF;
+            document.getElementById("GFG1_4").innerHTML = equipos[3].GF;
+    
+        }catch (e) {
+                console.error("Error getting documents: ", e);
+            }
+        }
+        rellenarTablas1();
+        async function dataGrupo1() {
+      for (let i = 1; i <= 6; i++) {
+        const docId = `G1_${i}`;
+        const docRef = doc(db, "partidos", docId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          const G1 = data.G1;
+          const G2 = data.G2;
+          document.getElementById(docId).innerHTML = `${G1} - ${G2}`;
+        } else {
+          console.log(`No such document: ${docId}`);
+        }
+        }
+    }
+    dataGrupo1();
+    </script>
 </body>
 </html>

@@ -13,15 +13,19 @@
 
     </header>
     <div class="container" id="loader">
-        <div class="cargando">
-          <div class="pelotas"></div>
-          <div class="pelotas"></div>
-          <div class="pelotas"></div>
-          <span class="texto-cargando">Cargando...</span>
-        </div>
+      <div class="cargando">
+        <div class="pelotas"></div>
+        <div class="pelotas"></div>
+        <div class="pelotas"></div>
+        <span class="texto-cargando">Cargando...</span>
       </div>
+    </div>
 <div id="todo" style="display: none;">
-    <div id="popup" class="popup">
+  <p>Especificaciones: apretando en el resultado del partido se puede editar, tienen que poner el resultado separado con un guion (1-2).</p>
+  <p>Para borrar el resultado por si pusieron sin querer o estaban probando apretan en el resultado y borran todo y se reinicia</p>
+  <p>A partir de Mejores segundos para cambiar quienes pasaron apretar el nombre del equipo(segundo g1) y se puede editar </p>
+  <p>no boludeen que esto actualiza la tabla que todos pueden ver</p>
+  <div id="popup" class="popup">
         <div class="popup-content">
             <span class="close" onclick="togglePopup()">&times;</span>
             <h1>Opciones</h1>
@@ -52,13 +56,13 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>?</td>
+                        <td id="GT1_1">?</td>
                         <td>Petulia FC</td>
                         <td>Q.V.M</td>
                         <td id="G1_1">-</td>
                     </tr>
                     <tr>
-                        <td>?</td>
+                        <td id="GT1_2T">?</td>
                         <td>Kirikocho FC</td>
                         <td>Dumbo FC</td>
                         <td id="G1_2">-</td>
@@ -72,14 +76,14 @@
                     </tr>
                     </thead>
                     <tr>
-                        <td>?</td>
+                        <td id="GT1_3T">?</td>
                         <td>Petulia FC</td>
                         <td>Kirikocho FC</td>
                         <td id="G1_3">-</td>
                     </tr>
 
                     <tr>
-                        <td>?</td>
+                        <td id="GT1_4T">?</td>
                         <td>Q.V.M</td>
                         <td>Dumbo FC</td>
                         <td id="G1_4">-</td>
@@ -93,14 +97,14 @@
                     </tr>
                     </thead>
                     <tr>
-                        <td>?</td>
+                        <td id="GT1_5T">?</td>
                         <td>Dumbo FC</td>
                         <td>Petulia FC</td>
                         <td id="G1_5">-</td>
                     </tr>
                     
                     <tr>
-                        <td>?</td>
+                        <td id="GT1_6T">?</td>
                         <td>Q.V.M</td>
                         <td>Kirikocho FC</td>
                         <td id="G1_6">-</td>
@@ -220,7 +224,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Ganador 1/2</th>
+                        <th>Hora</th>
                         <th>Equipo 1</th>
                         <th>Equipo 2</th>
                         <th>Resultado</th>
@@ -255,7 +259,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Ganador 1/2</th>
+                        <th>Hora</th>
                         <th>Equipo 1</th>
                         <th>Equipo 2</th>
                         <th>Resultado</th>
@@ -284,7 +288,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Ganador 1/2</th>
+                        <th>Hora</th>
                         <th>Equipo 1</th>
                         <th>Equipo 2</th>
                         <th>Resultado</th>
@@ -307,7 +311,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Ganador 1/2</th>
+                        <th>Hora</th>
                         <th>Equipo 1</th>
                         <th>Equipo 2</th>
                         <th>Resultado</th>
@@ -326,7 +330,7 @@
             </table>
         </section>
     </main>
-</div>
+  </div>
     <script>
         function togglePopup() {
             var popup = document.getElementById("popup");
@@ -515,9 +519,7 @@
         } else {
           console.log("No such document!");
         }
-
     }
-
     async function dataGanFinal() {
       for (let i = 1; i <= 2; i++) {
         const docId = `GanFinal_${i}`;
@@ -533,6 +535,7 @@
         }
       }
     }
+
     dataGrupo1();
     dataGrupo2();
     dataGrupo3();
@@ -544,6 +547,323 @@
     dataGanTerCuar();
     dataFinal();
     dataGanFinal();
+
+
+    // Add event listeners for editing the content
+    document.querySelectorAll('td[id^="G1_"]').forEach(cell => {
+      cell.addEventListener('click', function() {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = this.innerText === '-' ? '' : this.innerText;
+        input.addEventListener('blur', async () => {
+          const values = input.value.split('-');
+          const G1 = values[0] ? values[0].trim() : '';
+          const G2 = values[1] ? values[1].trim() : '';
+          this.innerText = `${G1}-${G2}`;
+          
+          let Ganador;
+          if (parseInt(G1) > parseInt(G2)) {
+            Ganador = 'G1';  
+          } else if (parseInt(G1) < parseInt(G2)) {
+            Ganador = 'G2';  
+          } else {
+            Ganador = 'G3';
+          }
+          if (G1=="") {
+            Ganador = 'NA';
+          }
+          // Update the database with the new values
+          const docId = this.id;
+          const docRef = doc(db, "partidos", docId);
+          await setDoc(docRef, { G1, G2, Ganador }, { merge: true });
+        });
+        this.innerHTML = '';
+        this.appendChild(input);
+        input.focus();
+      });
+    });
+
+    document.querySelectorAll('td[id^="G2_"]').forEach(cell => {
+      cell.addEventListener('click', function() {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = this.innerText === '-' ? '' : this.innerText;
+        input.addEventListener('blur', async () => {
+          const values = input.value.split('-');
+          const G1 = values[0] ? values[0].trim() : '';
+          const G2 = values[1] ? values[1].trim() : '';
+          this.innerText = `${G1}-${G2}`;
+
+          let Ganador;
+          if (parseInt(G1) > parseInt(G2)) {
+            Ganador = 'G1';  
+          } else if (parseInt(G1) < parseInt(G2)) {
+            Ganador = 'G2';  
+          } else {
+            Ganador = 'G3';
+          }
+          if (G1=="") {
+            Ganador = 'NA';
+          }
+          // Update the database with the new values
+          const docId = this.id;
+          const docRef = doc(db, "partidos", docId);
+          await setDoc(docRef, { G1, G2, Ganador }, { merge: true });
+        });
+        this.innerHTML = '';
+        this.appendChild(input);
+        input.focus();
+      });
+    });
+    document.querySelectorAll('td[id^="G3_"]').forEach(cell => {
+      cell.addEventListener('click', function() {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = this.innerText === '-' ? '' : this.innerText;
+        input.addEventListener('blur', async () => {
+          const values = input.value.split('-');
+          const G1 = values[0] ? values[0].trim() : '';
+          const G2 = values[1] ? values[1].trim() : '';
+          this.innerText = `${G1}-${G2}`;
+          
+
+          let Ganador;
+          if (parseInt(G1) > parseInt(G2)) {
+            Ganador = 'G1';  
+          } else if (parseInt(G1) < parseInt(G2)) {
+            Ganador = 'G2';  
+          } else {
+            Ganador = 'G3';
+          }
+          if (G1=="") {
+            Ganador = 'NA';
+          }
+          // Update the database with the new values
+          const docId = this.id;
+          const docRef = doc(db, "partidos", docId);
+          await setDoc(docRef, { G1, G2, Ganador }, { merge: true });
+        });
+        this.innerHTML = '';
+        this.appendChild(input);
+        input.focus();
+      });
+    });
+    document.querySelectorAll('td[id^="Seg_"]').forEach(cell => {
+      cell.addEventListener('click', function() {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = this.innerText === '-' ? '' : this.innerText;
+        input.addEventListener('blur', async () => {
+          const values = input.value.split('-');
+          const G1 = values[0] ? values[0].trim() : '';
+          const G2 = values[1] ? values[1].trim() : '';
+          this.innerText = `${G1}-${G2}`;
+          
+          let Ganador;
+          if (parseInt(G1) > parseInt(G2)) {
+            Ganador = 'G1';  
+          } else if (parseInt(G1) < parseInt(G2)) {
+            Ganador = 'G2';  
+          } else {
+            Ganador = 'G3';
+          }
+          if (G1=="") {
+            Ganador = 'NA';
+          }
+          // Update the database with the new values
+          const docId = this.id;
+          const docRef = doc(db, "partidos", docId);
+          await setDoc(docRef, { G1, G2, Ganador }, { merge: true });
+        });
+        this.innerHTML = '';
+        this.appendChild(input);
+        input.focus();
+      });
+    });
+    document.querySelectorAll('td[id^="Sem_"]').forEach(cell => {
+      cell.addEventListener('click', function() {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = this.innerText === '-' ? '' : this.innerText;
+        input.addEventListener('blur', async () => {
+          const values = input.value.split('-');
+          const G1 = values[0] ? values[0].trim() : '';
+          const G2 = values[1] ? values[1].trim() : '';
+          this.innerText = `${G1}-${G2}`;
+          
+          let Ganador;
+          if (parseInt(G1) > parseInt(G2)) {
+            Ganador = 'G1';  
+          } else if (parseInt(G1) < parseInt(G2)) {
+            Ganador = 'G2';  
+          } else {
+            Ganador = 'G3';
+          }
+          if (G1=="") {
+            Ganador = 'NA';
+          }
+          // Update the database with the new values
+          const docId = this.id;
+          const docRef = doc(db, "partidos", docId);
+          await setDoc(docRef, { G1, G2, Ganador }, { merge: true });
+        });
+        this.innerHTML = '';
+        this.appendChild(input);
+        input.focus();
+      });
+    });
+    document.querySelectorAll('td[id^="TerCuar"]').forEach(cell => {
+      cell.addEventListener('click', function() {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = this.innerText === '-' ? '' : this.innerText;
+        input.addEventListener('blur', async () => {
+          const values = input.value.split('-');
+          const G1 = values[0] ? values[0].trim() : '';
+          const G2 = values[1] ? values[1].trim() : '';
+          this.innerText = `${G1}-${G2}`;
+           
+          let Ganador;
+          if (parseInt(G1) > parseInt(G2)) {
+            Ganador = 'G1';  
+          } else if (parseInt(G1) < parseInt(G2)) {
+            Ganador = 'G2';  
+          } else {
+            Ganador = 'G3';
+          }
+          if (G1=="") {
+            Ganador = 'NA';
+          }
+          // Update the database with the new values
+          const docId = this.id;
+          const docRef = doc(db, "partidos", docId);
+          await setDoc(docRef, { G1, G2, Ganador }, { merge: true });
+        });
+        this.innerHTML = '';
+        this.appendChild(input);
+        input.focus();
+      });
+    });
+    document.querySelectorAll('td[id^="Final"]').forEach(cell => {
+      cell.addEventListener('click', function() {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = this.innerText === '-' ? '' : this.innerText;
+        input.addEventListener('blur', async () => {
+          const values = input.value.split('-');
+          const G1 = values[0] ? values[0].trim() : '';
+          const G2 = values[1] ? values[1].trim() : '';
+          this.innerText = `${G1}-${G2}`;
+
+          let Ganador;
+          if (parseInt(G1) > parseInt(G2)) {
+            Ganador = 'G1';  
+          } else if (parseInt(G1) < parseInt(G2)) {
+            Ganador = 'G2';  
+          } else {
+            Ganador = 'G3';
+          }
+          if (G1=="") {
+            Ganador = 'NA';
+          }
+          // Update the database with the new values
+          const docId = this.id;
+          const docRef = doc(db, "partidos", docId);
+          await setDoc(docRef, { G1, G2, Ganador }, { merge: true });
+        });
+        this.innerHTML = '';
+        this.appendChild(input);
+        input.focus();
+      });
+    });
+
+    document.querySelectorAll('td[id^="GanSeg_"]').forEach(cell => {
+      cell.addEventListener('click', function() {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = this.innerText === '-' ? '' : this.innerText;
+        input.addEventListener('blur', async () => {
+          const values = input.value.split('-');
+          const E1 = values[0] ? values[0].trim() : '';
+          this.innerText = `${E1}`;
+          
+
+          // Update the database with the new values
+          const docId = this.id;
+          const docRef = doc(db, "partidos", docId);
+          await setDoc(docRef, {E1}, { merge: true });
+        });
+        this.innerHTML = '';
+        this.appendChild(input);
+        input.focus();
+      });
+    });
+
+    document.querySelectorAll('td[id^="GanSem_"]').forEach(cell => {
+      cell.addEventListener('click', function() {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = this.innerText === '-' ? '' : this.innerText;
+        input.addEventListener('blur', async () => {
+          const values = input.value.split('-');
+          const E1 = values[0] ? values[0].trim() : '';
+          this.innerText = `${E1}`;
+          
+
+          // Update the database with the new values
+          const docId = this.id;
+          const docRef = doc(db, "partidos", docId);
+          await setDoc(docRef, {E1}, { merge: true });
+        });
+        this.innerHTML = '';
+        this.appendChild(input);
+        input.focus();
+      });
+    });
+
+    document.querySelectorAll('td[id^="GanTerCuar"]').forEach(cell => {
+      cell.addEventListener('click', function() {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = this.innerText === '-' ? '' : this.innerText;
+        input.addEventListener('blur', async () => {
+          const values = input.value.split('-');
+          const E1 = values[0] ? values[0].trim() : '';
+          this.innerText = `${E1}`;
+          
+
+          // Update the database with the new values
+          const docId = this.id;
+          const docRef = doc(db, "partidos", docId);
+          await setDoc(docRef, {E1}, { merge: true });
+        });
+        this.innerHTML = '';
+        this.appendChild(input);
+        input.focus();
+      });
+    });
+
+    document.querySelectorAll('td[id^="GanFinal"]').forEach(cell => {
+      cell.addEventListener('click', function() {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = this.innerText === '-' ? '' : this.innerText;
+        input.addEventListener('blur', async () => {
+          const values = input.value.split('-');
+          const E1 = values[0] ? values[0].trim() : '';
+          this.innerText = `${E1}`;
+          
+
+          // Update the database with the new values
+          const docId = this.id;
+          const docRef = doc(db, "partidos", docId);
+          await setDoc(docRef, {E1}, { merge: true });
+        });
+        this.innerHTML = '';
+        this.appendChild(input);
+        input.focus();
+      });
+    });
     </script>
     <footer>
         <p>&copy; 2024 Jornada 1ro a 3ro</p>

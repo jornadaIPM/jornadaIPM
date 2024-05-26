@@ -18,7 +18,16 @@
         <h1>Tablas</h1>
         <div class="menu-icon" onclick="togglePopup()">☰</div>
     </header>
-
+    <div class="container" id="loader">
+        <div class="cargando">
+          <div class="pelotas"></div>
+          <div class="pelotas"></div>
+          <div class="pelotas"></div>
+          <span class="texto-cargando">Cargando...</span>
+        </div>
+      </div>
+      
+<div id="todo" style="display: none;">
     <div id="popup" class="popup">
         <div class="popup-content">
             <span class="close" onclick="togglePopup()">&times;</span>
@@ -29,14 +38,14 @@
                 <br>
                 <li><a href="fixtures.html" style="font-size: larger;">Fixtures</a></li>
                 <br>
-                <li><a href=""style="font-size: larger;" >Comida</a></li>
+                <li><a onclick="pasarDev()" style="font-size: larger;" >Dev Options</a></li>
                 
             </ul>
         </div>
     </div>
 
     <main>
-        <section onclick="grupo1()" id="tabla-grupo1">
+        <section  id="tabla-grupo1">
             <h2>Grupo 1</h2>
             <table>
                 <thead>
@@ -52,40 +61,40 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Petulia FC</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG1_1">Petulia FC</td>
+                        <td id="puntosG1_1">0</td>
+                        <td id="PJG1_1">0</td>
+                        <td id="GFG1_1">0</td>
+                        <td id="GCG1_1">0</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Q.V.M</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG1_2">Q.V.M</td>
+                        <td id="puntosG1_2">0</td>
+                        <td id="PJG1_2">0</td>
+                        <td id="GFG1_2">0</td>
+                        <td id="GCG1_2">0</td>
                     </tr>
                     <tr>
-                        <td>3</td>
-                        <td>Kirikocho FC</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td >3</td>
+                        <td id="nombreG1_3">Kirikocho FC</td>
+                        <td id="puntosG1_3">0</td>
+                        <td id="PJG1_3">0</td>
+                        <td id="GFG1_3">0</td>
+                        <td id="GCG1_3">0</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Dumbo FC</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG1_4">Dumbo FC</td>
+                        <td id="puntosG1_4">0</td>
+                        <td id="PJG1_4">0</td>
+                        <td id="GFG1_4">0</td>
+                        <td id="GCG1_4">0</td>
                     </tr>
                 </tbody>
             </table>
         </section>
-        <section onclick="grupo2()" id="tabla-grupo2">
+        <section  id="tabla-grupo2">
             <h2>Grupo 2</h2>
             <table>
                 <thead>
@@ -101,40 +110,40 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Scovenetta</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG2_1">Scovenetta</td>
+                        <td id="puntosG2_1">0</td>
+                        <td id="PJG2_1">0</td>
+                        <td id="GFG2_1">0</td>
+                        <td id="GCG2_1">0</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Varry</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG2_2">Sin nombre FC</td>
+                        <td id="puntosG2_2">0</td>
+                        <td id="PJG2_2">0</td>
+                        <td id="GFG2_2">0</td>
+                        <td id="GCG2_2">0</td>
                     </tr>
                     <tr>
-                        <td>3</td>
-                        <td>Serpinos Family</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td >3</td>
+                        <td id="nombreG2_3">Varry</td>
+                        <td id="puntosG2_3">0</td>
+                        <td id="PJG2_3">0</td>
+                        <td id="GFG2_3">0</td>
+                        <td id="GCG2_3">0</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Sin nombre FC</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG2_4">Serpinos Family</td>
+                        <td id="puntosG2_4">0</td>
+                        <td id="PJG2_4">0</td>
+                        <td id="GFG2_4">0</td>
+                        <td id="GCG2_4">0</td>
                     </tr>
                 </tbody>
             </table>
         </section>
-        <section onclick="grupo3()" id="tabla-grupo3">
+        <section  id="tabla-grupo3">
             <h2>Grupo 3</h2>
             <table>
                 <thead>
@@ -150,35 +159,34 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Ruckj Aragona</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG3_1">Ruckj Aragona</td>
+                        <td id="puntosG3_1">0</td>
+                        <td id="PJG3_1">0</td>
+                        <td id="GFG3_1">0</td>
+                        <td id="GCG3_1">0</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Que baile el brujo</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG3_2">La reserva</td>
+                        <td id="puntosG3_2">0</td>
+                        <td id="PJG3_2">0</td>
+                        <td id="GFG3_2">0</td>
+                        <td id="GCG3_2">0</td>
                     </tr>
                     <tr>
-                        <td>3</td>
-                        <td>La reserva</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td >3</td>
+                        <td id="nombreG3_3">Que baile el brujo</td>
+                        <td id="puntosG3_3">0</td>
+                        <td id="PJG3_3">0</td>
+                        <td id="GFG3_3">0</td>
+                        <td id="GCG3_3">0</td>
                     </tr>
-
                 </tbody>
             </table>
         </section>
 
     </main>
-
+</div>
     <footer>
         <p>&copy; 2024 Jornada 1ro a 3ro</p>
     </footer>
@@ -201,12 +209,20 @@
             window.location.href = "fxtG4.html"
         }
         
+        function pasarDev() {
+          let password = prompt("Please enter the password:");
+          if (password === "fumoLindo33") {
+            window.location.href = "fixturesEditable.html"
+          } else {
+            alert("Incorrect password.");
+          }
+        } 
     </script>
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-analytics.js";
-    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
-  
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+
     const firebaseConfig = {
       apiKey: "AIzaSyCsmqiMwPKeYdqasr_o36BworobPwzBdOE",
       authDomain: "jornadapoli.firebaseapp.com",
@@ -245,6 +261,716 @@
   
     // Llamada a la función para agregar datos
     //addTeamWithCustomId(docData, customId);
+
+    const teamIds1 = ["Petulia FC", "Q.V.M", "Kirikocho FC", "Dumbo FC"];
+    const teamIds2 = ["Scovenetta", "Varry", "Serpinos Family", "Sin nombre FC"];
+    const teamIds3 = ["Ruckj Aragona", "La reserva", "Que baile el brujo"];
+
+
+     // Function to sum GF and GC for Petulia FC and update in equipos collection
+     async function updatePetuliaFC() {
+     const matches = ["G1_1", "G1_3", "G1_5"];
+     let totalGF = 0;
+     let totalGC = 0;
+     let totalPuntos = 0;
+     for (const match of matches) {
+         const docRef = doc(db, "partidos", match);
+         const docSnap = await getDoc(docRef);
+
+       if (docSnap.exists()) {
+         const data = docSnap.data();
+         let GF, GC, puntos = 0;
+        
+         if (match === "G1_5") {
+           // Petulia FC es visitante en G1_5
+           GF = parseInt(data.G2);
+           GC = parseInt(data.G1);
+           if (data.Ganador=="G2") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         } else {
+           // Petulia FC es local en G1_1 y G1_3
+           GF = parseInt(data.G1);
+           GC = parseInt(data.G2);
+           if (data.Ganador=="G1") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         }
+
+         if (!isNaN(GF)) totalGF += GF;
+         if (!isNaN(GC)) totalGC += GC;
+         if (!isNaN(puntos)) totalPuntos += puntos;
+       } else {
+         console.log(`No such document: ${match}`);
+       }
+     }
+     // Update the equipos collection for PetuliaFC
+     const petuliaRef = doc(db, "equipos", "Petulia FC");
+     await setDoc(petuliaRef, { GF: totalGF, GC: totalGC, puntos: totalPuntos }, { merge: true });
+     console.log(`Updated PetuliaFC: GF=${totalGF}, GC=${totalGC}`);
+
+
+    }
+   
+    async function updateQVM() {
+     const matches = ["G1_1", "G1_4", "G1_6"];
+     let totalGF = 0;
+     let totalGC = 0;
+     let totalPuntos = 0;
+     for (const match of matches) {
+         const docRef = doc(db, "partidos", match);
+         const docSnap = await getDoc(docRef);
+
+       if (docSnap.exists()) {
+         const data = docSnap.data();
+         let GF, GC, puntos = 0;
+        
+         if (match === "G1_1") {
+           //  es visitante 
+           GF = parseInt(data.G2);
+           GC = parseInt(data.G1);
+           if (data.Ganador=="G2") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+           console.log("s"+puntos)
+         } else {
+           GF = parseInt(data.G1);
+           GC = parseInt(data.G2);
+           if (data.Ganador=="G1") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         }
+
+         if (!isNaN(GF)) totalGF += GF;
+         if (!isNaN(GC)) totalGC += GC;
+         if (!isNaN(puntos)) totalPuntos += puntos;
+       } else {
+         console.log(`No such document: ${match}`);
+       }
+     }
+     // Update the equipos collection for PetuliaFC
+     const petuliaRef = doc(db, "equipos", "Q.V.M");
+     await setDoc(petuliaRef, { GF: totalGF, GC: totalGC, puntos: totalPuntos }, { merge: true });
+     console.log(`Updated GF=${totalGF}, GC=${totalGC}`);
+
+
+    }
+   
+    async function updateKirikochoFC() {
+     const matches = ["G1_2", "G1_3", "G1_6"];
+     let totalGF = 0;
+     let totalGC = 0;
+     let totalPuntos = 0;
+     for (const match of matches) {
+         const docRef = doc(db, "partidos", match);
+         const docSnap = await getDoc(docRef);
+
+       if (docSnap.exists()) {
+         const data = docSnap.data();
+         let GF, GC, puntos = 0;
+        
+         if (match === "G1_3" ||match === "G1_6") {
+           //  es visitante 
+           GF = parseInt(data.G2);
+           GC = parseInt(data.G1);
+           if (data.Ganador=="G2") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         } else {
+           GF = parseInt(data.G1);
+           GC = parseInt(data.G2);
+           if (data.Ganador=="G1") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         }
+
+         if (!isNaN(GF)) totalGF += GF;
+         if (!isNaN(GC)) totalGC += GC;
+         if (!isNaN(puntos)) totalPuntos += puntos;
+       } else {
+         console.log(`No such document: ${match}`);
+       }
+     }
+     // Update the equipos collection for PetuliaFC
+     const petuliaRef = doc(db, "equipos", "Kirikocho FC");
+     await setDoc(petuliaRef, { GF: totalGF, GC: totalGC, puntos: totalPuntos }, { merge: true });
+     console.log(`Updated GF=${totalGF}, GC=${totalGC}`);
+
+
+    }
+    
+    async function updateDumboFC() {
+     const matches = ["G1_2", "G1_4", "G1_5"];
+     let totalGF = 0;
+     let totalGC = 0;
+     let totalPuntos = 0;
+     for (const match of matches) {
+         const docRef = doc(db, "partidos", match);
+         const docSnap = await getDoc(docRef);
+
+       if (docSnap.exists()) {
+         const data = docSnap.data();
+         let GF, GC, puntos = 0;
+        
+         if (match === "G1_2" ||match === "G1_4") {
+           //  es visitante 
+           GF = parseInt(data.G2);
+           GC = parseInt(data.G1);
+           if (data.Ganador=="G2") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         } else {
+           GF = parseInt(data.G1);
+           GC = parseInt(data.G2);
+           if (data.Ganador=="G1") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         }
+
+         if (!isNaN(GF)) totalGF += GF;
+         if (!isNaN(GC)) totalGC += GC;
+         if (!isNaN(puntos)) totalPuntos += puntos;
+       } else {
+         console.log(`No such document: ${match}`);
+       }
+     }
+     // Update the equipos collection for PetuliaFC
+     const petuliaRef = doc(db, "equipos", "Dumbo FC");
+     await setDoc(petuliaRef, { GF: totalGF, GC: totalGC, puntos: totalPuntos }, { merge: true });
+     console.log(`Updated GF=${totalGF}, GC=${totalGC}`);
+
+     rellenarTablas1();
+    rellenarTablas2();
+    rellenarTablas3();
+    }
+    
+    async function updateScovenetta() {
+     const matches = ["G2_1", "G2_3", "G2_5"];
+     let totalGF = 0;
+     let totalGC = 0;
+     let totalPuntos = 0;
+     for (const match of matches) {
+         const docRef = doc(db, "partidos", match);
+         const docSnap = await getDoc(docRef);
+
+       if (docSnap.exists()) {
+         const data = docSnap.data();
+         let GF, GC, puntos = 0;
+        
+         if (match === "G2_djsjhf") {
+           //  es visitante 
+           GF = parseInt(data.G2);
+           GC = parseInt(data.G1);
+           if (data.Ganador=="G2") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         } else {
+           GF = parseInt(data.G1);
+           GC = parseInt(data.G2);
+           if (data.Ganador=="G1") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         }
+
+         if (!isNaN(GF)) totalGF += GF;
+         if (!isNaN(GC)) totalGC += GC;
+         if (!isNaN(puntos)) totalPuntos += puntos;
+       } else {
+         console.log(`No such document: ${match}`);
+       }
+     }
+     // Update the equipos collection for PetuliaFC
+     const petuliaRef = doc(db, "equipos", "Scovenetta");
+     await setDoc(petuliaRef, { GF: totalGF, GC: totalGC, puntos: totalPuntos }, { merge: true });
+     console.log(`Updated GF=${totalGF}, GC=${totalGC}`);
+
+     rellenarTablas1();
+    rellenarTablas2();
+    rellenarTablas3();
+    }
+
+    async function updateVarry() {
+     const matches = ["G2_2", "G2_3", "G2_6"];
+     let totalGF = 0;
+     let totalGC = 0;
+     let totalPuntos = 0;
+     for (const match of matches) {
+         const docRef = doc(db, "partidos", match);
+         const docSnap = await getDoc(docRef);
+
+       if (docSnap.exists()) {
+         const data = docSnap.data();
+         let GF, GC, puntos = 0;
+        
+         if (match === "G2_3" || match === "G2_6") {
+           //  es visitante 
+           GF = parseInt(data.G2);
+           GC = parseInt(data.G1);
+           if (data.Ganador=="G2") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         } else {
+           GF = parseInt(data.G1);
+           GC = parseInt(data.G2);
+           if (data.Ganador=="G1") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         }
+
+         if (!isNaN(GF)) totalGF += GF;
+         if (!isNaN(GC)) totalGC += GC;
+         if (!isNaN(puntos)) totalPuntos += puntos;
+       } else {
+         console.log(`No such document: ${match}`);
+       }
+     }
+     // Update the equipos collection for PetuliaFC
+     const petuliaRef = doc(db, "equipos", "Varry");
+     await setDoc(petuliaRef, { GF: totalGF, GC: totalGC, puntos: totalPuntos }, { merge: true });
+     console.log(`Updated GF=${totalGF}, GC=${totalGC}`);
+    }
+
+    async function updateSinNombreFC() {
+     const matches = ["G2_1", "G2_4", "G2_6"];
+     let totalGF = 0;
+     let totalGC = 0;
+     let totalPuntos = 0;
+     for (const match of matches) {
+         const docRef = doc(db, "partidos", match);
+         const docSnap = await getDoc(docRef);
+
+       if (docSnap.exists()) {
+         const data = docSnap.data();
+         let GF, GC, puntos = 0;
+        
+         if (match === "G2_1") {
+           //  es visitante 
+           GF = parseInt(data.G2);
+           GC = parseInt(data.G1);
+           if (data.Ganador=="G2") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         } else {
+           GF = parseInt(data.G1);
+           GC = parseInt(data.G2);
+           if (data.Ganador=="G1") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         }
+
+         if (!isNaN(GF)) totalGF += GF;
+         if (!isNaN(GC)) totalGC += GC;
+         if (!isNaN(puntos)) totalPuntos += puntos;
+       } else {
+         console.log(`No such document: ${match}`);
+       }
+     }
+     // Update the equipos collection for PetuliaFC
+     const petuliaRef = doc(db, "equipos", "Sin nombre FC");
+     await setDoc(petuliaRef, { GF: totalGF, GC: totalGC, puntos: totalPuntos }, { merge: true });
+     console.log(`Updated GF=${totalGF}, GC=${totalGC}`);
+    }
+
+    async function updateSerpinosFamily() {
+     const matches = ["G2_2", "G2_4", "G2_5"];
+     let totalGF = 0;
+     let totalGC = 0;
+     let totalPuntos = 0;
+     for (const match of matches) {
+         const docRef = doc(db, "partidos", match);
+         const docSnap = await getDoc(docRef);
+
+       if (docSnap.exists()) {
+         const data = docSnap.data();
+         let GF, GC, puntos = 0;
+        
+         if (match === "G2_2" || match === "G2_4"|| match === "G2_5") {
+           //  es visitante 
+           GF = parseInt(data.G2);
+           GC = parseInt(data.G1);
+           if (data.Ganador=="G2") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         } else {
+           GF = parseInt(data.G1);
+           GC = parseInt(data.G2);
+           if (data.Ganador=="G1") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         }
+
+         if (!isNaN(GF)) totalGF += GF;
+         if (!isNaN(GC)) totalGC += GC;
+         if (!isNaN(puntos)) totalPuntos += puntos;
+       } else {
+         console.log(`No such document: ${match}`);
+       }
+     }
+     // Update the equipos collection for PetuliaFC
+     const petuliaRef = doc(db, "equipos", "Serpinos Family");
+     await setDoc(petuliaRef, { GF: totalGF, GC: totalGC, puntos: totalPuntos }, { merge: true });
+     console.log(`Updated GF=${totalGF}, GC=${totalGC}`);
+    }
+
+    async function updateRuckjAragona() {
+     const matches = ["G3_1", "G3_2"];
+     let totalGF = 0;
+     let totalGC = 0;
+     let totalPuntos = 0;
+     for (const match of matches) {
+         const docRef = doc(db, "partidos", match);
+         const docSnap = await getDoc(docRef);
+
+       if (docSnap.exists()) {
+         const data = docSnap.data();
+         let GF, GC, puntos = 0;
+        
+         if (match === "G3_2") {
+           //  es visitante 
+           GF = parseInt(data.G2);
+           GC = parseInt(data.G1);
+           if (data.Ganador=="G2") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         } else {
+           GF = parseInt(data.G1);
+           GC = parseInt(data.G2);
+           if (data.Ganador=="G1") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         }
+
+         if (!isNaN(GF)) totalGF += GF;
+         if (!isNaN(GC)) totalGC += GC;
+         if (!isNaN(puntos)) totalPuntos += puntos;
+       } else {
+         console.log(`No such document: ${match}`);
+       }
+     }
+     // Update the equipos collection for PetuliaFC
+     const petuliaRef = doc(db, "equipos", "Ruckj Aragona");
+     await setDoc(petuliaRef, { GF: totalGF, GC: totalGC, puntos: totalPuntos }, { merge: true });
+     console.log(`Updated GF=${totalGF}, GC=${totalGC}`);
+    }
+
+    async function updateQueBaileElBrujo() {
+     const matches = ["G3_2", "G3_3"];
+     let totalGF = 0;
+     let totalGC = 0;
+     let totalPuntos = 0;
+     for (const match of matches) {
+         const docRef = doc(db, "partidos", match);
+         const docSnap = await getDoc(docRef);
+
+       if (docSnap.exists()) {
+         const data = docSnap.data();
+         let GF, GC, puntos = 0;
+        
+         if (match === "G3_3") {
+           //  es visitante 
+           GF = parseInt(data.G2);
+           GC = parseInt(data.G1);
+           if (data.Ganador=="G2") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         } else {
+           GF = parseInt(data.G1);
+           GC = parseInt(data.G2);
+           if (data.Ganador=="G1") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         }
+
+         if (!isNaN(GF)) totalGF += GF;
+         if (!isNaN(GC)) totalGC += GC;
+         if (!isNaN(puntos)) totalPuntos += puntos;
+       } else {
+         console.log(`No such document: ${match}`);
+       }
+     }
+     // Update the equipos collection for PetuliaFC
+     const petuliaRef = doc(db, "equipos", "Que baile el brujo");
+     await setDoc(petuliaRef, { GF: totalGF, GC: totalGC, puntos: totalPuntos }, { merge: true });
+     console.log(`Updated GF=${totalGF}, GC=${totalGC}`);
+    }
+
+    async function updateLaReserva() {
+     const matches = ["G3_1", "G3_3"];
+     let totalGF = 0;
+     let totalGC = 0;
+     let totalPuntos = 0;
+     for (const match of matches) {
+         const docRef = doc(db, "partidos", match);
+         const docSnap = await getDoc(docRef);
+
+       if (docSnap.exists()) {
+         const data = docSnap.data();
+         let GF, GC, puntos = 0;
+        
+         if (match === "G3_1") {
+           //  es visitante 
+           GF = parseInt(data.G2);
+           GC = parseInt(data.G1);
+           if (data.Ganador=="G2") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         } else {
+           GF = parseInt(data.G1);
+           GC = parseInt(data.G2);
+           if (data.Ganador=="G1") {
+            puntos=puntos+3;
+           }else if (data.Ganador=="G3") {
+            puntos=puntos+1;
+           }
+         }
+
+         if (!isNaN(GF)) totalGF += GF;
+         if (!isNaN(GC)) totalGC += GC;
+         if (!isNaN(puntos)) totalPuntos += puntos;
+       } else {
+         console.log(`No such document: ${match}`);
+       }
+     }
+     // Update the equipos collection for PetuliaFC
+     const petuliaRef = doc(db, "equipos", "La reserva");
+     await setDoc(petuliaRef, { GF: totalGF, GC: totalGC, puntos: totalPuntos }, { merge: true });
+     console.log(`Updated GF=${totalGF}, GC=${totalGC}`);
+    }
+
+
+
+
+
+    async function rellenarTablas1() {
+        try {
+            let equipos = [];
+
+            for (let id of teamIds1) {
+                const docRef = doc(db, "equipos", id);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    equipos.push({
+                        nombre: id,
+                        puntos: data.puntos,
+                        PJ: data.PJ,
+                        GC: data.GC,
+                        GF: data.GF
+                    });
+                } else {
+                    console.log(`No such document with ID: ${id}`);
+                }
+            }
+        
+    
+        // Ordenar los equipos por puntos de mayor a menor
+        equipos.sort((a, b) => {
+        if (b.puntos === a.puntos) {
+            if (b.GF === a.GF) {
+                return a.GC - b.GC; // Ordenar por GC de menor a mayor
+            }
+            return b.GF - a.GF; // Ordenar por GF de mayor a menor
+        }
+        return b.puntos - a.puntos; // Ordenar por puntos de mayor a menor
+        });
+        console.log(equipos)
+        document.getElementById("nombreG1_1").innerHTML = equipos[0].nombre;
+        document.getElementById("nombreG1_2").innerHTML = equipos[1].nombre;
+        document.getElementById("nombreG1_3").innerHTML = equipos[2].nombre;
+        document.getElementById("nombreG1_4").innerHTML = equipos[3].nombre;
+        document.getElementById("puntosG1_1").innerHTML = equipos[0].puntos;
+        document.getElementById("puntosG1_2").innerHTML = equipos[1].puntos;
+        document.getElementById("puntosG1_3").innerHTML = equipos[2].puntos;
+        document.getElementById("puntosG1_4").innerHTML = equipos[3].puntos;
+        document.getElementById("PJG1_1").innerHTML = equipos[0].PJ;
+        document.getElementById("PJG1_2").innerHTML = equipos[1].PJ;
+        document.getElementById("PJG1_3").innerHTML = equipos[2].PJ;
+        document.getElementById("PJG1_4").innerHTML = equipos[3].PJ;
+        document.getElementById("GCG1_1").innerHTML = equipos[0].GC;
+        document.getElementById("GCG1_2").innerHTML = equipos[1].GC;
+        document.getElementById("GCG1_3").innerHTML = equipos[2].GC;
+        document.getElementById("GCG1_4").innerHTML = equipos[3].GC;
+        document.getElementById("GFG1_1").innerHTML = equipos[0].GF;
+        document.getElementById("GFG1_2").innerHTML = equipos[1].GF;
+        document.getElementById("GFG1_3").innerHTML = equipos[2].GF;
+        document.getElementById("GFG1_4").innerHTML = equipos[3].GF;
+
+    }catch (e) {
+            console.error("Error getting documents: ", e);
+        }
+    }
+    async function rellenarTablas2() {
+        try {
+            let equipos = [];
+
+            for (let id of teamIds2) {
+                const docRef = doc(db, "equipos", id);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    equipos.push({
+                        nombre: id,
+                        puntos: data.puntos,
+                        PJ: data.PJ,
+                        GC: data.GC,
+                        GF: data.GF
+                    });
+                } else {
+                    console.log(`No such document with ID: ${id}`);
+                }
+            }
+        
+    
+        // Ordenar los equipos por puntos de mayor a menor
+        equipos.sort((a, b) => {
+        if (b.puntos === a.puntos) {
+            if (b.GF === a.GF) {
+                return a.GC - b.GC; // Ordenar por GC de menor a mayor
+            }
+            return b.GF - a.GF; // Ordenar por GF de mayor a menor
+        }
+        return b.puntos - a.puntos; // Ordenar por puntos de mayor a menor
+        });
+                console.log(equipos)
+        document.getElementById("nombreG2_1").innerHTML = equipos[0].nombre;
+        document.getElementById("nombreG2_2").innerHTML = equipos[1].nombre;
+        document.getElementById("nombreG2_3").innerHTML = equipos[2].nombre;
+        document.getElementById("nombreG2_4").innerHTML = equipos[3].nombre;
+        document.getElementById("puntosG2_1").innerHTML = equipos[0].puntos;
+        document.getElementById("puntosG2_2").innerHTML = equipos[1].puntos;
+        document.getElementById("puntosG2_3").innerHTML = equipos[2].puntos;
+        document.getElementById("puntosG2_4").innerHTML = equipos[3].puntos;
+        document.getElementById("PJG2_1").innerHTML = equipos[0].PJ;
+        document.getElementById("PJG2_2").innerHTML = equipos[1].PJ;
+        document.getElementById("PJG2_3").innerHTML = equipos[2].PJ;
+        document.getElementById("PJG2_4").innerHTML = equipos[3].PJ;
+        document.getElementById("GCG2_1").innerHTML = equipos[0].GC;
+        document.getElementById("GCG2_2").innerHTML = equipos[1].GC;
+        document.getElementById("GCG2_3").innerHTML = equipos[2].GC;
+        document.getElementById("GCG2_4").innerHTML = equipos[3].GC;
+        document.getElementById("GFG2_1").innerHTML = equipos[0].GF;
+        document.getElementById("GFG2_2").innerHTML = equipos[1].GF;
+        document.getElementById("GFG2_3").innerHTML = equipos[2].GF;
+        document.getElementById("GFG2_4").innerHTML = equipos[3].GF;
+
+    }catch (e) {
+            console.error("Error getting documents: ", e);
+        }
+    }
+    async function rellenarTablas3() {
+        try {
+            let equipos = [];
+
+            for (let id of teamIds3) {
+                const docRef = doc(db, "equipos", id);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    equipos.push({
+                        nombre: id,
+                        puntos: data.puntos,
+                        PJ: data.PJ,
+                        GC: data.GC,
+                        GF: data.GF
+                    });
+                } else {
+                    console.log(`No such document with ID: ${id}`);
+                }
+            }
+        
+    
+        // Ordenar los equipos por puntos de mayor a menor
+        equipos.sort((a, b) => {
+        if (b.puntos === a.puntos) {
+            if (b.GF === a.GF) {
+                return a.GC - b.GC; // Ordenar por GC de menor a mayor
+            }
+            return b.GF - a.GF; // Ordenar por GF de mayor a menor
+        }
+        return b.puntos - a.puntos; // Ordenar por puntos de mayor a menor
+        });
+                console.log(equipos)
+        document.getElementById("nombreG3_1").innerHTML = equipos[0].nombre;
+        document.getElementById("nombreG3_2").innerHTML = equipos[1].nombre;
+        document.getElementById("nombreG3_3").innerHTML = equipos[2].nombre;
+        document.getElementById("puntosG3_1").innerHTML = equipos[0].puntos;
+        document.getElementById("puntosG3_2").innerHTML = equipos[1].puntos;
+        document.getElementById("puntosG3_3").innerHTML = equipos[2].puntos;
+        document.getElementById("PJG3_1").innerHTML = equipos[0].PJ;
+        document.getElementById("PJG3_2").innerHTML = equipos[1].PJ;
+        document.getElementById("PJG3_3").innerHTML = equipos[2].PJ;
+        document.getElementById("GCG3_1").innerHTML = equipos[0].GC;
+        document.getElementById("GCG3_2").innerHTML = equipos[1].GC;
+        document.getElementById("GCG3_3").innerHTML = equipos[2].GC;
+        document.getElementById("GFG3_1").innerHTML = equipos[0].GF;
+        document.getElementById("GFG3_2").innerHTML = equipos[1].GF;
+        document.getElementById("GFG3_3").innerHTML = equipos[2].GF;
+
+    }catch (e) {
+            console.error("Error getting documents: ", e);
+        }
+    document.getElementById("todo").style.display = "block";
+    document.getElementById("loader").style.display = "none";
+    }
+        
+
+    updatePetuliaFC();
+    updateQVM();
+    updateKirikochoFC();
+    updateKirikochoFC();
+    updateScovenetta();
+    updateVarry();
+    updateSinNombreFC();
+    updateSerpinosFamily();
+    updateRuckjAragona();
+    updateQueBaileElBrujo();
+    updateLaReserva();
+
+    updateDumboFC();
+
+
 </script>
 
   

@@ -47,19 +47,19 @@
                         <td>?</td>
                         <td>Ruckj Aragona</td>
                         <td>La reserva</td>
-                        <td>-</td>
+                        <td id="G3_1">-</td>
                     </tr>
                     <tr>
                         <td>?</td>
                         <td>Que baile el brujo</td>
                         <td>Ruckj Aragona</td>
-                        <td>-</td>
+                        <td id="G3_2">-</td>
                     </tr>
                     <tr>
                         <td>?</td>
                         <td>La reserva</td>
                         <td>Que baile el brujo</td>
-                        <td>-</td>
+                        <td id="G3_3">-</td>
                     </tr>
 
                 </tbody>
@@ -82,29 +82,28 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Ruckj Aragona</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG3_1">Ruckj Aragona</td>
+                        <td id="puntosG3_1">0</td>
+                        <td id="PJG3_1">0</td>
+                        <td id="GFG3_1">0</td>
+                        <td id="GCG3_1">0</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Que baile el brujo</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td id="nombreG3_2">La reserva</td>
+                        <td id="puntosG3_2">0</td>
+                        <td id="PJG3_2">0</td>
+                        <td id="GFG3_2">0</td>
+                        <td id="GCG3_2">0</td>
                     </tr>
                     <tr>
-                        <td>3</td>
-                        <td>La reserva</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td >3</td>
+                        <td id="nombreG3_3">Que baile el brujo</td>
+                        <td id="puntosG3_3">0</td>
+                        <td id="PJG3_3">0</td>
+                        <td id="GFG3_3">0</td>
+                        <td id="GCG3_3">0</td>
                     </tr>
-
                 </tbody>
             </table>
         </section>
@@ -115,6 +114,119 @@
             popup.classList.toggle("show");
         }
     </script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-analytics.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCsmqiMwPKeYdqasr_o36BworobPwzBdOE",
+      authDomain: "jornadapoli.firebaseapp.com",
+      projectId: "jornadapoli",
+      storageBucket: "jornadapoli.appspot.com",
+      messagingSenderId: "269682921594",
+      appId: "1:269682921594:web:053816e578e62c490eebc3",
+      measurementId: "G-8ZTBEBNWXX"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+  
+    // Datos a agregar
+    const docData = {
+        partido: "Final",
+        G1:0,
+        G2:0
+    };
+    
+    // ID personalizado basado en el nombre del equipo
+    const customId = docData.partido;
+  
+    // Función para agregar datos con un ID personalizado
+    async function addTeamWithCustomId(docData, customId) {
+      try {
+        const docRef = doc(db, "partidos", customId);
+        await setDoc(docRef, docData);
+        console.log("Document written with custom ID: ", customId);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    }
+  
+    // Llamada a la función para agregar datos
+    //addTeamWithCustomId(docData, customId);
+
+    const teamIds3 = ["Ruckj Aragona", "La reserva", "Que baile el brujo"];
+
+    async function rellenarTablas3() {
+        try {
+            let equipos = [];
+
+            for (let id of teamIds3) {
+                const docRef = doc(db, "equipos", id);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    equipos.push({
+                        nombre: id,
+                        puntos: data.puntos,
+                        PJ: data.PJ,
+                        GC: data.GC,
+                        GF: data.GF
+                    });
+                } else {
+                    console.log(`No such document with ID: ${id}`);
+                }
+            }
+        
+    
+        // Ordenar los equipos por puntos de mayor a menor
+        equipos.sort((a, b) => b.puntos - a.puntos);
+        console.log(equipos)
+        document.getElementById("nombreG3_1").innerHTML = equipos[0].nombre;
+        document.getElementById("nombreG3_2").innerHTML = equipos[1].nombre;
+        document.getElementById("nombreG3_3").innerHTML = equipos[2].nombre;
+        document.getElementById("puntosG3_1").innerHTML = equipos[0].puntos;
+        document.getElementById("puntosG3_2").innerHTML = equipos[1].puntos;
+        document.getElementById("puntosG3_3").innerHTML = equipos[2].puntos;
+        document.getElementById("PJG3_1").innerHTML = equipos[0].PJ;
+        document.getElementById("PJG3_2").innerHTML = equipos[1].PJ;
+        document.getElementById("PJG3_3").innerHTML = equipos[2].PJ;
+        document.getElementById("GCG3_1").innerHTML = equipos[0].GC;
+        document.getElementById("GCG3_2").innerHTML = equipos[1].GC;
+        document.getElementById("GCG3_3").innerHTML = equipos[2].GC;
+        document.getElementById("GFG3_1").innerHTML = equipos[0].GF;
+        document.getElementById("GFG3_2").innerHTML = equipos[1].GF;
+        document.getElementById("GFG3_3").innerHTML = equipos[2].GF;
+
+    }catch (e) {
+            console.error("Error getting documents: ", e);
+        }
+    }
+        
+    async function dataGrupo3() {
+      for (let i = 1; i <= 3; i++) {
+        const docId = `G3_${i}`;
+        const docRef = doc(db, "partidos", docId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          const G1 = data.G1;
+          const G2 = data.G2;
+          document.getElementById(docId).innerHTML = `${G1} - ${G2}`;
+        } else {
+          console.log(`No such document: ${docId}`);
+        }
+      }
+    }
+    dataGrupo3();
+    rellenarTablas3();
+
+</script>
     <footer>
         <p>&copy; 2024 Jornada 1ro a 3ro</p>
     </footer>
